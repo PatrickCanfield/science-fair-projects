@@ -1,0 +1,11 @@
+1: Circuit Playground Express (3333)
+2: Circuit Playground Express (3333)
+3: Circuit Playground Bluefruit (4333)
+
+Circuit Playground Bluefruit: nRF52840 Cortex M4
+* 64 MHz Cortex M4 with FPU
+* 256 KB RAM
+
+Circuit Playground Express
+* 48 MHz Cortex M0
+* 32 KB RAM
