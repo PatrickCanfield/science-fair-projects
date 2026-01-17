@@ -57,4 +57,22 @@
 * [API & Usage](https://docs.circuitpython.org/projects/pm25/en/latest/)
 
 ## Pollutant Info
-TBA
+### 1. PMs (Particulate Matter)
+PMs are small particles like dust or ash that can get deep into the lungs and cause mild to severe health problems.  
+PMs are devided into four categories: PM10s, which are smaller than 10 μm and don't go as deep into the lungs, PM2.5s, which are smaller than 2.5 μm and burrow deeper than PM10s, PM1.0s, which are smaller than 1 μm and go very deep into the lungs, and UFPs (Ultra-fine Particles), which are smaller than 1/10μm (100nm).
+### 2. VOCs (Volatile Organic Compounds)
+VOCs are human-made chemicals used and produced in the manufacture of things like paints, pharmaceuticals, and refrigerants. VOCs are often components of fuels, paint thinners, and dry cleaning agents, and are emitted as gases from some solids and liquids, such as permanent markers.
+### 3. The AQI (Air Quality Index)
+The AQI is a system that takes pollution density and turns it into an index, for easy classification of how dangerous the pollution in the area is. To find the AQI in your area, go to [airnow.gov](https://www.airnow.gov).  
+The AQI rankings are as follows:
+|Index |Ranking  |
+|------|---------|
+|0-50|Good     |
+|51-100|Moderate|
+|101-150|Sensitive|
+|151-200|Unhealthy|
+|201-300|Very Unhealthy|
+|301+|Hazardous|
+
+---
+##### By Patrick and Christopher Canfield
