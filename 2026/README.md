@@ -2,9 +2,9 @@
 
 ## Devices
 
-1: Circuit Playground Express (3333)
-2: Circuit Playground Express (3333)
-3: Circuit Playground Bluefruit (4333)
+1. Circuit Playground Express (3333)
+2. Circuit Playground Express (3333)
+3. Circuit Playground Bluefruit (4333)
 
 ### Circuit Playground Bluefruit
 
