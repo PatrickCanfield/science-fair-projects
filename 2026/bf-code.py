@@ -9,6 +9,9 @@ import adafruit_displayio_ssd1306
 import adafruit_ens160
 
 import time
+import adafruit_thermistor
+thermistor = adafruit_thermistor.Thermistor(
+    board.TEMPERATURE, 10000, 10000, 25, 3950)
 
 import board
 import busio
@@ -29,18 +32,18 @@ ens = adafruit_ens160.ENS160(i2c)
 WIDTH = 128
 HEIGHT = 64
 #BORDER = 5
-def aqiname(value):
-    if (value == 1):
+def getaqi():
+    if (aqdata["pm25 standard"] < 9 and aqdata["pm25 standard"]>-1):
         return "Good"
-    elif (value == 2):
+    elif (aqdata["pm25 standard"] < 35 and aqdata["pm25 standard"]>-1):
         return "Moderate"
-    elif (value == 3):
+    elif (aqdata["pm25 standard"] < 55 and aqdata["pm25 standard"]>-1):
         return "Sensitive"
-    elif (value == 4):
+    elif (aqdata["pm25 standard"] < 125 and aqdata["pm25 standard"]>-1):
         return "Unhealthy"
-    elif (value == 5):
+    elif (aqdata["pm25 standard"] < 225 and aqdata["pm25 standard"]>-1):
         return "Very Unhealthy"
-    elif (value == 0):
+    elif (aqdata["pm25 standard"] > 224 and aqdata["pm25 standard"]>-1):
         return "Hazardous"
     else:
         return "Error"
@@ -73,7 +76,7 @@ screen.append(pm25_text_area)
 pm100_text_area = label.Label(terminalio.FONT, text="", x=0, y=44)
 screen.append(pm100_text_area)
 
-aqi_text_area = label.Label(terminalio.FONT, text="", x=0, y=56)
+aqi_text_area = label.Label(terminalio.FONT, text="", x=68, y=44)
 screen.append(aqi_text_area)
 
 voc_text_area = label.Label(terminalio.FONT, text="", x=68, y=20)
@@ -81,6 +84,12 @@ screen.append(voc_text_area)
 
 co2_text_area = label.Label(terminalio.FONT, text="", x=68, y=32)
 screen.append(co2_text_area)
+
+temp_text_area = label.Label(terminalio.FONT, text="", x=0, y=56)
+screen.append(temp_text_area)
+
+degC_text_area = label.Label(terminalio.FONT, text="", x=68, y=56)
+screen.append(degC_text_area)
 
 for i in range(20,68,12):
     screen.append(label.Label(terminalio.FONT, text="|", x=64, y=i))
@@ -94,12 +103,14 @@ while True:
         print("Unable to read from sensor, retrying...")
         continue
 
-    aqi_text_area.text = str.format("AQI:{}", ens.AQI)
+    aqi_text_area.text = str.format("~AQI:{}", getaqi())
     voc_text_area.text = str.format("VOC:{}", ens.TVOC)
     co2_text_area.text = str.format("CO2:{}", ens.eCO2)
     pm10_text_area.text = str.format("PM 1.0:{}", aqdata["pm10 standard"])
     pm25_text_area.text = str.format("PM 2.5:{}", aqdata["pm25 standard"])
     pm100_text_area.text = str.format("PM 10: {}", aqdata["pm100 standard"])
+    temp_text_area.text = str.format("TEMP F:{}", round((thermistor.temperature*1.8)+32))
+    degC_text_area.text = str.format("TEMP C:{}", round(thermistor.temperature))
 
     print("---------------------------------------")
     print("Particles > 0.3um / 0.1L air:", aqdata["particles 03um"])
