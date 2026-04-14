@@ -36,15 +36,15 @@ def getaqi():
     if (aqdata["pm25 standard"] < 9 and aqdata["pm25 standard"]>-1):
         return "Good"
     elif (aqdata["pm25 standard"] < 35 and aqdata["pm25 standard"]>-1):
-        return "Moderate"
+        return "Mid"
     elif (aqdata["pm25 standard"] < 55 and aqdata["pm25 standard"]>-1):
-        return "Sensitive"
+        return "USG"
     elif (aqdata["pm25 standard"] < 125 and aqdata["pm25 standard"]>-1):
-        return "Unhealthy"
+        return "Unhty"
     elif (aqdata["pm25 standard"] < 225 and aqdata["pm25 standard"]>-1):
-        return "Very Unhealthy"
+        return "Uhty+"
     elif (aqdata["pm25 standard"] > 224 and aqdata["pm25 standard"]>-1):
-        return "Hazardous"
+        return "Hzard"
     else:
         return "Error"
 
